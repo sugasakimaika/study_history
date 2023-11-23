@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
 import unittest
 from unittest.mock import patch
 from src.commit_to_github import commit_to_github
