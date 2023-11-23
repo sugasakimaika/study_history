@@ -1,6 +1,10 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
 import unittest
 from unittest.mock import patch
-from studyplus_records_api import fetch_studyplus_records
+from src.studyplus_records_api import fetch_studyplus_records
 
 class TestStudyPlusRecordsAPI(unittest.TestCase):
     def test_fetch_studyplus_records_success(self):
@@ -9,11 +13,10 @@ class TestStudyPlusRecordsAPI(unittest.TestCase):
             mock_get.return_value.status_code = 200
             mock_get.return_value.json.return_value = {'data': 'study records'}
 
-            # Call the function with a valid API key
             api_key = 'VALID_API_KEY'
             result = fetch_studyplus_records(api_key)
 
-            # Assert that the response is as expected
+            # 200と確認できて、得られるresult(StudyRecord)が期待通りであるか確認
             self.assertEqual(result, {'data': 'study records'})
 
     def test_fetch_studyplus_records_failure(self):

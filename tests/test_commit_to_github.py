@@ -1,9 +1,10 @@
-pytestimport unittest
+import unittest
 from unittest.mock import patch
-from commit_to_github import commit_to_github
+from src.commit_to_github import commit_to_github
+from src.studyplus_records_api import fetch_studyplus_records
 
 class TestCommitToGithub(unittest.TestCase):
-    @patch('commit_to_github.subprocess.run')
+    @patch('src.commit_to_github.subprocess.run')
     def test_commit_to_github(self, mock_run):
         # Mock the subprocess.run method to avoid actual execution
         mock_run.return_value = None
